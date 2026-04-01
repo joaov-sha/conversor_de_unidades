@@ -28,6 +28,7 @@ public class Main {
                 sair();
                 break;
             }
+            
             System.out.println();
             System.out.print("Informe um número para conversão: ");
             String numeroParaConversao = s.nextLine();
@@ -62,7 +63,22 @@ public class Main {
         } else if(baseDoNumeroInformado == 8){
 
         } else if(baseDoNumeroInformado == 10){
+            int numeroInteiro = Integer.parseInt(numeroParaConversao);
+            StringBuilder sb = new StringBuilder();
+            for(int i = numeroInteiro; (i / 2 == 0) || (i / 2 >= 1); i /= 2){
+                double numero = (double) i;
+                if(numero == 0){
+                    break;
+                }
 
+                if(numero % 2.0 > 0){
+                    sb.append(1);
+                }else{
+                    sb.append(0);
+                }
+            }
+            String resultado = sb.reverse().toString();
+            System.out.println("O resultado da conversão de decimal para binário é: " + resultado + "\n");
         } else if(baseDoNumeroInformado == 16){
 
         }
@@ -95,7 +111,7 @@ public class Main {
             for(int i = 0; i < numerosOrdenados.length; i++){
                 resultado += numerosOrdenados[i] * Math.pow(2, i);
             }
-            System.out.println("O resultado da conversão de binário para decimal é: " + resultado);
+            System.out.println("O resultado da conversão de binário para decimal é: " + resultado + "\n");
         } else if(baseDoNumeroInformado == 8){
 
         } else if(baseDoNumeroInformado == 10){
