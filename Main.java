@@ -1,0 +1,153 @@
+package conversor;
+
+import java.util.Scanner;
+
+public class Main {
+    public static Scanner s = new Scanner(System.in);
+
+    public static void main(String[] args) {
+        exibirMenu();
+        s.close();
+        System.exit(0);
+    }
+
+    public static void exibirMenu(){
+        int opcao = -1;
+        do{
+            System.out.println("Menu:");
+            System.out.println("1 - Converter número para binário");
+            System.out.println("2 - Converter número para octal");
+            System.out.println("3 - Converter número para decimal");
+            System.out.println("4 - Converter número para hexadecimal");
+            System.out.println("0 - Sair");
+            System.out.print("Selecione uma opção: ");
+            opcao = s.nextInt();
+            s.nextLine();
+
+            if(opcao == 0){
+                sair();
+                break;
+            }
+            System.out.println();
+            System.out.print("Informe um número para conversão: ");
+            String numeroParaConversao = s.nextLine();
+            System.out.print("Informe a base do número informado: ");
+            int baseDoNumeroInformado = s.nextInt();
+            s.nextLine();
+
+            switch(opcao){
+                case 1:
+                    converterNumeroParaBinarioEExibir(numeroParaConversao, baseDoNumeroInformado);
+                    break;
+                case 2:
+                    converterNumeroParaOctalEExibir(numeroParaConversao, baseDoNumeroInformado);
+                    break;
+                case 3:
+                    converterNumeroParaDecimalEExibir(numeroParaConversao, baseDoNumeroInformado);
+                    break;
+                case 4:
+                    converterNumeroParaHexadecimalEExibir(numeroParaConversao, baseDoNumeroInformado);
+                    break;
+                default:
+                    System.out.println("Opção inválida selecionada! Tente novamente.");
+                    opcao = s.nextInt();
+                    break;
+            }
+        }while(opcao != 0);
+    }
+
+    public static void converterNumeroParaBinarioEExibir(String numeroParaConversao, int baseDoNumeroInformado) {
+        if(baseDoNumeroInformado == 2){
+            System.out.println("Conversão desnecessária, portanto o número é: " + numeroParaConversao);
+        } else if(baseDoNumeroInformado == 8){
+
+        } else if(baseDoNumeroInformado == 10){
+
+        } else if(baseDoNumeroInformado == 16){
+
+        }
+    }
+
+    public static void converterNumeroParaOctalEExibir(String numeroParaConversao, int baseDoNumeroInformado) {
+        if(baseDoNumeroInformado == 2){
+
+        } else if(baseDoNumeroInformado == 8){
+            System.out.println("Conversão desnecessária, portanto o número é: " + numeroParaConversao);
+        } else if(baseDoNumeroInformado == 10){
+
+        } else if(baseDoNumeroInformado == 16){
+            
+        }
+    }
+
+    public static void converterNumeroParaDecimalEExibir(String numeroParaConversao, int baseDoNumeroInformado) {
+        if(baseDoNumeroInformado == 2){
+            String[] caracteres = numeroParaConversao.split("");
+            int[] numeros = new int[caracteres.length];
+            int[] numerosOrdenados = new int[numeros.length];
+            for(int i = 0; i < numeros.length; i++){
+                numeros[i] = Integer.parseInt(caracteres[i]);
+            }
+            for(int i = 0; i < numeros.length; i++){
+                numerosOrdenados[i] = numeros[numeros.length - 1 - i];
+            }
+            int resultado = 0;
+            for(int i = 0; i < numerosOrdenados.length; i++){
+                resultado += numerosOrdenados[i] * Math.pow(2, i);
+            }
+            System.out.println("O resultado da conversão de binário para decimal é: " + resultado);
+        } else if(baseDoNumeroInformado == 8){
+
+        } else if(baseDoNumeroInformado == 10){
+            System.out.println("Conversão desnecessária, portanto o número é: " + numeroParaConversao);
+        } else if(baseDoNumeroInformado == 16){
+            String[] caracteres = numeroParaConversao.split("");
+            for(int i = 0; i < caracteres.length; i++){
+                if(caracteres[i].equalsIgnoreCase("a")){
+                    caracteres[i] = "10";
+                }else if(caracteres[i].equalsIgnoreCase("b")){
+                    caracteres[i] = "11";
+                }else if(caracteres[i].equalsIgnoreCase("c")){
+                    caracteres[i] = "12";
+                }else if(caracteres[i].equalsIgnoreCase("d")){
+                    caracteres[i] = "13";
+                }else if(caracteres[i].equalsIgnoreCase("e")){
+                    caracteres[i] = "14";
+                }else if(caracteres[i].equalsIgnoreCase("f")){
+                    caracteres[i] = "15";
+                }
+            }
+            int[] numeros = new int[caracteres.length];
+            for(int i = 0; i < caracteres.length; i++){
+                numeros[i] = Integer.parseInt(caracteres[i]);
+            }
+            int[] numerosOrdenados = new int[numeros.length];
+            for(int i = 0; i < numeros.length; i++){
+                numerosOrdenados[i] = numeros[numeros.length - 1 - i];
+            }
+            int resultado = 0;
+            for(int i = 0; i < numerosOrdenados.length; i++){
+                resultado += numerosOrdenados[i] * Math.pow(16,i);
+            }
+            System.out.println("O resultado da conversão de Hexadecimal para Decimal é: " + resultado + "\n");
+        }
+    }
+
+    public static void converterNumeroParaHexadecimalEExibir(String numeroParaConversao, int baseDoNumeroInformado) {
+        if(baseDoNumeroInformado == 2){
+
+        } else if(baseDoNumeroInformado == 8){
+
+        } else if(baseDoNumeroInformado == 10){
+            
+        } else if(baseDoNumeroInformado == 16){
+            System.out.println("Conversão desnecessária, portanto o número é: " + numeroParaConversao);
+        }
+    }
+
+    public static void sair(){
+        System.out.println("Saindo...");
+        s.close();
+        System.exit(0);
+    }
+}
