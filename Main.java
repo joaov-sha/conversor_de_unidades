@@ -61,7 +61,23 @@ public class Main {
         if (baseDoNumeroInformado == 2) {
             System.out.println("Conversão desnecessária, portanto o número é: " + numeroParaConversao);
         } else if (baseDoNumeroInformado == 8) {
-            
+            String[] caracteres = numeroParaConversao.split("");
+            StringBuilder sb = new StringBuilder();
+            for(int i = 0; i < caracteres.length; i++){
+                for(int j = Integer.parseInt(caracteres[i]); (j / 2 == 0) || (j / 2 >= 1); j /= 2){
+                    if(j == 0){
+                        break;
+                    }
+
+                    if(j % 2.0 > 0){
+                        sb.append(1);
+                    }else{
+                        sb.append(0);
+                    }
+                }
+            }
+            String resultado = sb.toString();
+            System.out.println("O resultado da conversão de octal para binário é: " + resultado);
         } else if (baseDoNumeroInformado == 10) {
             int numeroInteiro = Integer.parseInt(numeroParaConversao);
             StringBuilder sb = new StringBuilder();
@@ -80,13 +96,47 @@ public class Main {
             String resultado = sb.reverse().toString();
             System.out.println("O resultado da conversão de decimal para binário é: " + resultado + "\n");
         } else if (baseDoNumeroInformado == 16) {
+            String[] caracteres = numeroParaConversao.split("");
+            for(int i = 0; i < caracteres.length; i++){
+                if(caracteres[i].equalsIgnoreCase("a")){
+                    caracteres[i] = "10";
+                }else if(caracteres[i].equalsIgnoreCase("b")){
+                    caracteres[i] = "11";
+                }else if(caracteres[i].equalsIgnoreCase("c")){
+                    caracteres[i] = "12";
+                }else if(caracteres[i].equalsIgnoreCase("d")){
+                    caracteres[i] = "13";
+                }else if(caracteres[i].equalsIgnoreCase("e")){
+                    caracteres[i] = "14";
+                }else if(caracteres[i].equalsIgnoreCase("f")){
+                    caracteres[i] = "15";
+                }
+            }
+            StringBuilder sb = new StringBuilder();
+            for(int i = 0; i < caracteres.length; i++){
+                for(int j = Integer.parseInt(caracteres[i]); (j / 2 == 0) || (j / 2 >= 1); j /= 2){
+                    if(j == 0){
+                        break;
+                    }
 
+                    if(j % 2.0 > 0){
+                        sb.append(1);
+                    }else{
+                        sb.append(0);
+                    }
+                }
+            }
+            String resultado = sb.toString();
+            System.out.println("O resultado da conversão de Hexadecimal para binário é: " + resultado);
         }
     }
 
     public static void converterNumeroParaOctalEExibir(String numeroParaConversao, int baseDoNumeroInformado) {
         if (baseDoNumeroInformado == 2) {
-
+            String[] caracteres = numeroParaConversao.split("");
+            for(int i = 0; i < caracteres.length; i++){
+                
+            }
         } else if (baseDoNumeroInformado == 8) {
             System.out.println("Conversão desnecessária, portanto o número é: " + numeroParaConversao);
         } else if (baseDoNumeroInformado == 10) {
