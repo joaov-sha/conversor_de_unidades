@@ -135,6 +135,7 @@ public class Main {
         if (baseDoNumeroInformado == 2) {
             String[] caracteres = numeroParaConversao.split("");
             String[] valores = new String[(int)Math.ceil(caracteres.length/3.0)];
+            int[] valoresInteiros = new int[valores.length];
             StringBuilder sb = new StringBuilder();
             int k = 0;
             for(int i = 0; i < caracteres.length; i++){
@@ -152,15 +153,22 @@ public class Main {
                     }
                 }
             }
-            
-            for(String s : valores){
-                System.out.println(s);
+
+            for(int i = 0; i < valores.length; i++){
+                for(int j = 0; j < valores[i].length(); j++){
+                    valoresInteiros[i] += Integer.parseInt(valores[i].split("")[j]) * Math.pow(2,j);
+                }
             }
-            
+            sb.setLength(0);
+            for(int valor : valoresInteiros){
+                sb.append(valor);
+            }
+            String resultado = sb.toString();
+            System.out.println("O resultado da conversão de binário para octal é: " + resultado);
         } else if (baseDoNumeroInformado == 8) {
             System.out.println("Conversão desnecessária, portanto o número é: " + numeroParaConversao);
         } else if (baseDoNumeroInformado == 10) {
-
+            String[] caracteres = numeroParaConversao.split("");
         } else if (baseDoNumeroInformado == 16) {
 
         }
