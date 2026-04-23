@@ -211,7 +211,73 @@ public class Main {
             
             return sb.reverse().toString();
         } else if (baseDoNumeroInformado == 16) {
-            return null;
+            String[] caracteres = numeroParaConversao.split("");
+            for (int i = 0; i < caracteres.length; i++) {
+                if (caracteres[i].equalsIgnoreCase("a")) {
+                    caracteres[i] = "10";
+                } else if (caracteres[i].equalsIgnoreCase("b")) {
+                    caracteres[i] = "11";
+                } else if (caracteres[i].equalsIgnoreCase("c")) {
+                    caracteres[i] = "12";
+                } else if (caracteres[i].equalsIgnoreCase("d")) {
+                    caracteres[i] = "13";
+                } else if (caracteres[i].equalsIgnoreCase("e")) {
+                    caracteres[i] = "14";
+                } else if (caracteres[i].equalsIgnoreCase("f")) {
+                    caracteres[i] = "15";
+                }
+            }
+            StringBuilder sb = new StringBuilder();
+            for (int i = 0; i < caracteres.length; i++) {
+                for (int j = Integer.parseInt(caracteres[i]); j/2 > 0; j /= 2) {
+                    if (j % 2.0 > 0) {
+                        sb.append(1);
+                    } else {
+                        sb.append(0);
+                    }
+                }
+            }
+            if(sb.length() % 3 != 0){
+                while(sb.length() % 3 != 0){
+                    sb.append("0");
+                }
+            }
+            String numeroBinario = sb.toString();
+            System.out.println(numeroBinario);
+            sb.setLength(0);
+            String[] binarios = numeroBinario.split("");
+            String[] conjuntos = new String[(int) Math.ceil(binarios.length/3.0)];
+            int k = 0;
+            for(int i = 0; i < binarios.length; i++){
+                for(int j = k; (j <= k+3) && j < binarios.length; j++){
+                    sb.append(binarios[j]);
+                    if(sb.length() == 3){
+                        conjuntos[i] = sb.toString();
+                        j+= 2;
+                        sb.setLength(0);
+                    }
+                }
+                k+= 3;
+            }
+            for(String s : conjuntos){
+                sb.append(s);
+            }
+            int[] numeroConvertido = new int[conjuntos.length];
+            for(int i = 0; i < numeroConvertido.length; i++){
+                numeroConvertido[i] = 0;
+            }
+            for(int i = 0; i < conjuntos.length; i++){
+                String[] numeros = conjuntos[i].split("");
+                for(int j = numeros.length-1; j >= 0; j--){
+                    numeroConvertido[i] += Integer.parseInt(numeros[j]) * Math.pow(2,j);
+                }
+            }
+            sb.setLength(0);
+            for(int i : numeroConvertido){
+                sb.append(i);
+            }
+            
+            return sb.reverse().toString();
         }else{
             return null;
         }
