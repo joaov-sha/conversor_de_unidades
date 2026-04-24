@@ -237,14 +237,12 @@ public class Main {
                     }
                 }
             }
-            System.out.println(sb.toString());
             if(sb.length() % 3 != 0){
                 while(sb.length() % 3 != 0){
                     sb.append("0");
                 }
             }
             String numeroBinario = sb.toString();
-            System.out.println(numeroBinario);
             sb.setLength(0);
             String[] binarios = numeroBinario.split("");
             String[] conjuntos = new String[(int) Math.ceil(binarios.length/3.0)];
