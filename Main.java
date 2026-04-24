@@ -228,8 +228,8 @@ public class Main {
                 }
             }
             StringBuilder sb = new StringBuilder();
-            for (int i = 0; i < caracteres.length; i++) {
-                for (int j = Integer.parseInt(caracteres[i]); j/2 > 0; j /= 2) {
+            for (int i = caracteres.length-1; i >= 0; i--) {
+                for (int j = Integer.parseInt(caracteres[i]); j > 0; j /= 2) {
                     if (j % 2.0 > 0) {
                         sb.append(1);
                     } else {
@@ -237,6 +237,7 @@ public class Main {
                     }
                 }
             }
+            System.out.println(sb.toString());
             if(sb.length() % 3 != 0){
                 while(sb.length() % 3 != 0){
                     sb.append("0");
